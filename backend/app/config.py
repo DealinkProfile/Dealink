@@ -17,9 +17,7 @@ class Settings:
     
     # API Keys
     SERPAPI_KEY: str | None = os.getenv("SERPAPI_KEY")
-    EBAY_API_KEY: str | None = os.getenv("EBAY_API_KEY")
-    WALMART_API_KEY: str | None = os.getenv("WALMART_API_KEY")
-    AMAZON_TAG: str | None = os.getenv("AMAZON_TAG")
+    SKIMLINKS_PUBLISHER_ID: str | None = os.getenv("SKIMLINKS_PUBLISHER_ID", "298985X178660")
     
     # Cache
     REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")

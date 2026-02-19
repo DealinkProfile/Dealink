@@ -4,7 +4,7 @@
 // Backend URL — change to production URL when deploying
 // Local development: http://127.0.0.1:8000
 // Production: https://your-app.railway.app (or Render URL)
-const BACKEND_URL = 'http://127.0.0.1:8000/api/v1/detect-product';
+const BACKEND_URL = 'http://127.0.0.1:8000/api/v1/search';
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 1000; // 1 second base delay
 const CACHE_TTL = 1 * 60 * 60 * 1000; // 1 hour (aligned with backend cache)
@@ -189,24 +189,57 @@ async function processProductDetection(productData) {
     
     // No valid cache, fetch from backend
     console.log('[Dealink] Fetching from backend...');
+
+    // Extract GTIN from identifiers (prefer GTIN > EAN > UPC)
+    const ids = productData.identifiers || {};
+    const gtin = ids.gtin || ids.ean || ids.upc || null;
+
+    const searchPayload = {
+      gtin: gtin,
+      title: productData.title || '',
+      source_url: productData.url || '',
+      current_price: productData.price || null,
+    };
+
     const result = await fetchWithRetry(BACKEND_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(productData),
+      body: JSON.stringify(searchPayload),
     });
     
     console.log('[Dealink] Backend response:', result);
-    
+
+    // Transform new API format → popup-compatible format
+    // affiliate_url is used as the click URL so every purchase earns commission
+    const popupResult = {
+      original_price: searchPayload.current_price,
+      same_products: (result.results || []).map(r => ({
+        source: r.store,
+        platform: r.store?.toLowerCase().replace(/[^a-z0-9]/g, ''),
+        title: r.title,
+        price: r.price,
+        total: r.price,
+        price_str: r.price_str,
+        url: r.affiliate_url || r.url,  // affiliate link = commission
+        image: r.image,
+        rating: r.rating,
+        reviews: r.reviews,
+        condition: 'new',
+      })),
+      similar_products: [],
+      used_products: [],
+    };
+
     // Store in cache
     await chrome.storage.local.set({
       [cacheKey]: {
-        data: result,
+        data: popupResult,
         timestamp: now,
       },
     });
-    
+
     // Store results for popup
-    await storeResults(result, productInfo);
+    await storeResults(popupResult, productInfo);
     
   } catch (error) {
     console.error('[Dealink] Error after retries:', error);
@@ -227,6 +260,7 @@ async function processProductDetection(productData) {
       message: getErrorMessage(error),
       same_products: [],
       similar_products: [],
+      used_products: [],
     };
     
     await storeResults(errorResult, productInfo);
