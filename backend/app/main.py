@@ -7,6 +7,7 @@ import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from loguru import logger
 from app.core.logging import setup_logging
 from app.core.exceptions import DealinkException
@@ -94,6 +95,16 @@ async def dealink_exception_handler(request, exc: DealinkException):
         "error": exc.detail,
         "status_code": exc.status_code
     }
+
+
+# Branded redirect — hides Skimlinks, shows Dealink URL to users
+# Usage: /go?u=https://amazon.com/dp/B0CS31JRLG
+@app.get("/go")
+async def go(u: str):
+    """Branded affiliate redirect. Users see a Dealink URL, we earn commission."""
+    from app.services.affiliate import make_affiliate_link
+    affiliate_url = make_affiliate_link(u)
+    return RedirectResponse(url=affiliate_url, status_code=302)
 
 
 # Root endpoint

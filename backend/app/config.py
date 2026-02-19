@@ -18,6 +18,9 @@ class Settings:
     # API Keys
     SERPAPI_KEY: str | None = os.getenv("SERPAPI_KEY")
     SKIMLINKS_PUBLISHER_ID: str | None = os.getenv("SKIMLINKS_PUBLISHER_ID", "298985X178660")
+
+    # Public URL — used for branded /go links (update when you have a domain)
+    BASE_URL: str = os.getenv("BASE_URL", "http://127.0.0.1:8000")
     
     # Cache
     REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
