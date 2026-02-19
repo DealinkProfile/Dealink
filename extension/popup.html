@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="popup">
+    <!-- Header - minimal -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#3B82F6"/>
+            <path d="M8 12l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="brand-name">Dealink</span>
+      </div>
+      <button class="close-btn" id="close-btn" title="סגור">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Loading State -->
+    <div id="state-loading" class="state">
+      <div class="loading-content">
+        <div class="loading-icon">
+          <svg class="scanner" width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" fill="none" stroke="#E2E8F0" stroke-width="3"/>
+            <circle cx="24" cy="24" r="20" fill="none" stroke="#3B82F6" stroke-width="3" 
+                    stroke-dasharray="126" stroke-dashoffset="126" class="progress-ring"/>
+          </svg>
+          <div class="pulse-dot"></div>
+        </div>
+        <h2 class="loading-title">סורק מחירים...</h2>
+        <p class="loading-subtitle">בודק Amazon, eBay, Walmart ועוד</p>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="progress-text" id="progress-text">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Found Deals State -->
+    <div id="state-results" class="state hidden">
+      <!-- Sort Bar -->
+      <div class="sort-bar" id="sort-bar">
+        <span class="sort-label">מיין לפי:</span>
+        <div class="sort-buttons">
+          <button class="sort-btn active" data-sort="price" title="מחיר נמוך לגבוה">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <polyline points="5 16 12 23 19 16"></polyline>
+            </svg>
+            מחיר
+          </button>
+          <button class="sort-btn" data-sort="popularity" title="הכי פופולרי (כמות ביקורות)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            פופולריות
+          </button>
+          <button class="sort-btn" data-sort="rating" title="דירוג גבוה לנמוך">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            דירוג
+          </button>
+        </div>
+      </div>
+
+      <!-- Best Deal Card (combined with summary) -->
+      <div class="best-deal-card" id="best-deal-card">
+        <div class="best-deal-header">
+          <span class="best-deal-title">💰 מצאנו מחיר זול יותר!</span>
+          <span class="best-deal-savings" id="best-deal-savings">חסוך $30.62 (27%)</span>
+        </div>
+        <a class="best-deal-content" id="best-deal-link" href="#" target="_blank">
+          <div class="best-deal-action">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+          <div class="best-deal-store">
+            <img class="best-deal-logo" id="best-deal-logo" src="" alt="">
+            <span class="best-deal-store-name" id="best-deal-store-name">Walmart</span>
+          </div>
+          <span class="best-deal-badge" id="best-deal-badge">-27%</span>
+          <span class="best-deal-price" id="best-deal-price">$83.37</span>
+          <span class="best-deal-shipping" id="best-deal-shipping">משלוח חינם</span>
+          <div class="result-meta" id="best-deal-meta"></div>
+        </a>
+      </div>
+
+      <!-- Other Results List (top results) -->
+      <div class="results-list" id="results-list">
+        <!-- Cards will be inserted here -->
+      </div>
+
+      <!-- Show More Button -->
+      <button class="show-more-btn hidden" id="show-more-btn">
+        <span id="show-more-text">הצג עוד תוצאות</span>
+        <span class="show-more-count" id="show-more-count"></span>
+        <svg class="show-more-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+
+      <!-- Extra Results (hidden until Show More) -->
+      <div class="results-list hidden" id="results-list-extra">
+        <!-- Extra cards will be inserted here -->
+      </div>
+
+      <!-- Used/Refurbished Products Section -->
+      <div id="used-section" class="used-section hidden">
+        <button class="used-toggle" id="used-toggle">
+          <div class="used-toggle-content">
+            <span class="used-toggle-icon">♻️</span>
+            <span class="used-toggle-text">דילים משומשים / מחודשים</span>
+            <span class="used-count-badge" id="used-count-badge">0</span>
+          </div>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="used-list hidden" id="used-list"></div>
+      </div>
+
+      <!-- Similar Products Toggle -->
+      <div id="similar-section" class="similar-section hidden">
+        <button class="similar-toggle" id="similar-toggle">
+          <span>מוצרים דומים</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="similar-list hidden" id="similar-list"></div>
+      </div>
+    </div>
+
+    <!-- No Product State -->
+    <div id="state-no-product" class="state hidden">
+      <div class="empty-state">
+        <div class="empty-icon">🛍️</div>
+        <h2 class="empty-title">עבור לדף מוצר</h2>
+        <p class="empty-text">נווט לדף מוצר באחד מהאתרים הנתמכים</p>
+        <div class="supported-stores">
+          <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=32" alt="Amazon" title="Amazon">
+          <img src="https://www.google.com/s2/favicons?domain=ebay.com&sz=32" alt="eBay" title="eBay">
+          <img src="https://www.google.com/s2/favicons?domain=walmart.com&sz=32" alt="Walmart" title="Walmart">
+          <img src="https://www.google.com/s2/favicons?domain=target.com&sz=32" alt="Target" title="Target">
+          <img src="https://www.google.com/s2/favicons?domain=bestbuy.com&sz=32" alt="Best Buy" title="Best Buy">
+        </div>
+      </div>
+    </div>
+
+    <!-- No Deals State -->
+    <div id="state-no-deals" class="state hidden">
+      <div class="empty-state">
+        <div class="empty-icon">✨</div>
+        <h2 class="empty-title">זה המחיר הטוב ביותר!</h2>
+        <p class="empty-text">לא מצאנו מחירים זולים יותר עבור המוצר הזה</p>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="state-error" class="state hidden">
+      <div class="empty-state">
+        <div class="empty-icon">😕</div>
+        <h2 class="empty-title">משהו השתבש</h2>
+        <p class="empty-text" id="error-message">לא הצלחנו לחפש מחירים. נסה שוב.</p>
+        <button class="btn btn-primary" id="retry-btn">נסה שוב</button>
+      </div>
+    </div>
+
+    <!-- Footer - minimal -->
+    <footer class="footer">
+      <button class="footer-link" id="report-btn">דווח על בעיה</button>
+      <span class="footer-divider">•</span>
+      <a href="privacy-policy.html" target="_blank" class="footer-link">פרטיות</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

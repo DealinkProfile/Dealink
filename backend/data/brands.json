@@ -1,0 +1,246 @@
+{
+  "_comment": "Dealink brand data - edit this file to add/remove brands without touching code",
+  
+  "brands_by_category": {
+    "electronics": {
+      "smartphones": ["Apple", "Samsung", "Google", "Xiaomi", "OnePlus", "Huawei", "Oppo", "Vivo", "Motorola", "Nokia", "Sony", "Realme", "Poco", "Nothing"],
+      "computers": ["Dell", "HP", "Lenovo", "Asus", "Acer", "MSI", "Microsoft", "Apple", "Razer", "Alienware", "Gigabyte", "Toshiba", "Fujitsu"],
+      "tablets": ["Apple", "Samsung", "Microsoft", "Lenovo", "Amazon", "Huawei", "Xiaomi"],
+      "audio": ["Sony", "Bose", "JBL", "Sennheiser", "Audio-Technica", "Beats", "Skullcandy", "Jabra", "Bang & Olufsen", "Harman Kardon", "Marshall", "Sonos", "Ultimate Ears", "Anker", "Soundcore", "Shure", "AKG", "Beyerdynamic", "Focal", "Audeze", "HiFiMan", "Grado", "Denon", "Klipsch", "KEF", "Bowers & Wilkins", "B&W", "Edifier", "Creative", "Plantronics", "Poly", "Jaybird", "1More", "Fiio", "Astell&Kern", "Cambridge Audio", "NAD", "Marantz", "Yamaha", "Pioneer", "Onkyo", "Technics", "QCY", "Haylou", "TOPPING", "SMSL", "Moondrop", "KZ", "CCA", "TRN", "BLON", "Tin HiFi", "FIFINE", "Elgato", "Blue", "Rode", "HyperX"],
+      "tvs": ["Samsung", "LG", "Sony", "TCL", "Hisense", "Vizio", "Philips", "Panasonic", "Sharp", "Toshiba"],
+      "cameras": ["Canon", "Nikon", "Sony", "Fujifilm", "Panasonic", "Olympus", "Leica", "GoPro", "DJI", "Insta360"],
+      "gaming": ["Sony", "Microsoft", "Nintendo", "Razer", "Logitech", "SteelSeries", "Corsair", "HyperX", "ASUS ROG", "MSI", "Valve"],
+      "wearables": ["Apple", "Samsung", "Garmin", "Fitbit", "Amazfit", "Xiaomi", "Huawei", "Fossil", "Suunto", "Polar", "Haylou", "Ticwatch", "Mobvoi", "COROS", "Whoop"],
+      "accessories": ["Anker", "Belkin", "Logitech", "Ugreen", "Baseus", "Spigen", "OtterBox", "Mophie", "SanDisk", "Western Digital", "Seagate", "Kingston", "Crucial", "Samsung", "Nillkin", "ESR", "Caseology", "Ringke", "JSAUX", "Satechi", "CalDigit", "Twelve South"],
+      "microphones": ["FIFINE", "Elgato", "Blue", "Rode", "HyperX", "Audio-Technica", "Shure", "Razer", "Samson", "Maono", "Tonor", "Neewer"],
+      "3d_printers": ["Creality", "Anycubic", "Prusa", "Elegoo", "Bambu Lab", "FlashForge", "Sovol", "Artillery", "Voxelab", "QIDI"],
+      "keyboards": ["Logitech", "Corsair", "Razer", "SteelSeries", "HyperX", "Keychron", "Ducky", "RK ROYAL KLUDGE", "Redragon", "Anne Pro", "Akko", "GMMK", "Varmilo", "Leopold", "HHKB", "Das Keyboard", "Cherry"]
+    },
+    "home_appliances": {
+      "kitchen": ["KitchenAid", "Cuisinart", "Ninja", "Instant Pot", "Vitamix", "Breville", "Hamilton Beach", "Black+Decker", "Keurig", "Nespresso", "De'Longhi", "Smeg"],
+      "cleaning": ["Dyson", "iRobot", "Roomba", "Shark", "Bissell", "Hoover", "Miele", "Roborock", "Ecovacs", "Eufy", "Tineco"],
+      "air_quality": ["Dyson", "LEVOIT", "Coway", "Honeywell", "Blueair", "Molekule", "Winix", "Philips", "Sharp", "IQAir"],
+      "laundry": ["LG", "Samsung", "Whirlpool", "Maytag", "Bosch", "Miele", "GE", "Electrolux", "Speed Queen"]
+    },
+    "fashion": {
+      "sportswear": ["Nike", "Adidas", "Puma", "Under Armour", "Reebok", "New Balance", "Asics", "Lululemon", "Fila", "Champion"],
+      "luxury": ["Gucci", "Louis Vuitton", "Prada", "Chanel", "Hermès", "Burberry", "Versace", "Balenciaga", "Dior", "Fendi"],
+      "casual": ["Zara", "H&M", "Uniqlo", "Gap", "Levi's", "Tommy Hilfiger", "Calvin Klein", "Ralph Lauren", "Lacoste"],
+      "outdoor": ["The North Face", "Patagonia", "Columbia", "Arc'teryx", "Mammut", "Salomon", "Merrell"]
+    },
+    "beauty": {
+      "skincare": ["L'Oréal", "Olay", "Neutrogena", "CeraVe", "La Roche-Posay", "Clinique", "Estée Lauder", "SK-II", "The Ordinary", "Drunk Elephant"],
+      "makeup": ["MAC", "Maybelline", "NYX", "Urban Decay", "Too Faced", "Charlotte Tilbury", "NARS", "Fenty Beauty", "Rare Beauty"],
+      "haircare": ["Dyson", "ghd", "Olaplex", "Kerastase", "Moroccanoil", "Redken", "Paul Mitchell", "Revlon", "Conair", "BaByliss"]
+    },
+    "tools": {
+      "power_tools": ["DeWalt", "Milwaukee", "Makita", "Bosch", "Ryobi", "Black+Decker", "Craftsman", "Ridgid", "Kobalt", "Porter-Cable"],
+      "hand_tools": ["Stanley", "Klein Tools", "Snap-on", "Craftsman", "Husky", "Channellock", "Knipex", "Wera"]
+    }
+  },
+
+  "brand_aliases": {
+    "b&o": "Bang & Olufsen",
+    "b&w": "Bowers & Wilkins",
+    "bowers": "Bowers & Wilkins",
+    "jbl": "JBL",
+    "ue": "Ultimate Ears",
+    "a-t": "Audio-Technica",
+    "audio technica": "Audio-Technica",
+    "quietcomfort": "Bose",
+    "soundlink": "Bose",
+    "momentum": "Sennheiser",
+    "hd 600": "Sennheiser",
+    "hd600": "Sennheiser",
+    "hd 650": "Sennheiser",
+    "hd650": "Sennheiser",
+    "ie 600": "Sennheiser",
+    "akg": "AKG",
+    "dt 770": "Beyerdynamic",
+    "dt770": "Beyerdynamic",
+    "dt 990": "Beyerdynamic",
+    "dt990": "Beyerdynamic",
+    "beyerdynamic": "Beyerdynamic",
+    "shure": "Shure",
+    "se215": "Shure",
+    "se535": "Shure",
+    "sm7b": "Shure",
+    "audeze": "Audeze",
+    "lcd-x": "Audeze",
+    "hifiman": "HiFiMan",
+    "sundara": "HiFiMan",
+    "arya": "HiFiMan",
+    "grado": "Grado",
+    "plantronics": "Poly",
+    "poly": "Poly",
+    "jaybird": "Jaybird",
+    "1more": "1More",
+    "fiio": "Fiio",
+    "astell": "Astell&Kern",
+    
+    "lg": "LG",
+    "hp": "HP",
+    "wd": "Western Digital",
+    "rog": "ASUS ROG",
+    "msi": "MSI",
+    
+    "b+d": "Black+Decker",
+    "black and decker": "Black+Decker",
+    "north face": "The North Face",
+    "instant pot": "Instant Pot",
+    "roomba": "iRobot",
+    "levoit": "LEVOIT",
+    
+    "airpods": "Apple",
+    "iphone": "Apple",
+    "ipad": "Apple",
+    "macbook": "Apple",
+    "imac": "Apple",
+    "mac mini": "Apple",
+    "mac studio": "Apple",
+    "apple watch": "Apple",
+    "beats": "Apple",
+    
+    "galaxy": "Samsung",
+    "galaxy buds": "Samsung",
+    "galaxy watch": "Samsung",
+    
+    "playstation": "Sony",
+    "ps5": "Sony",
+    "ps4": "Sony",
+    "wh-1000": "Sony",
+    "wf-1000": "Sony",
+    "xperia": "Sony",
+    "bravia": "Sony",
+    "alpha a": "Sony",
+    
+    "surface": "Microsoft",
+    "xbox": "Microsoft",
+    
+    "pixel": "Google",
+    "nest": "Google",
+    "chromecast": "Google",
+    
+    "thinkpad": "Lenovo",
+    "ideapad": "Lenovo",
+    "legion": "Lenovo",
+    "yoga": "Lenovo",
+    
+    "xps": "Dell",
+    "inspiron": "Dell",
+    "alienware": "Dell",
+    "latitude": "Dell",
+    
+    "pavilion": "HP",
+    "envy": "HP",
+    "omen": "HP",
+    "spectre": "HP",
+    
+    "kindle": "Amazon",
+    "echo": "Amazon",
+    "fire tv": "Amazon",
+    "ring": "Amazon",
+    
+    "switch": "Nintendo",
+    "joy-con": "Nintendo",
+    
+    "mx master": "Logitech",
+    "mx keys": "Logitech",
+    "g pro": "Logitech",
+    
+    "dyson v": "Dyson",
+    "airwrap": "Dyson",
+    "supersonic": "Dyson",
+    "pure cool": "Dyson",
+    
+    "flip": "JBL",
+    "charge": "JBL",
+    "pulse": "JBL",
+    "partybox": "JBL",
+
+    "rk royal kludge": "RK ROYAL KLUDGE",
+    "rk84": "RK ROYAL KLUDGE",
+    "rk61": "RK ROYAL KLUDGE",
+    "rk68": "RK ROYAL KLUDGE",
+    "rk71": "RK ROYAL KLUDGE",
+    "rk100": "RK ROYAL KLUDGE",
+    "royal kludge": "RK ROYAL KLUDGE",
+    
+    "keychron": "Keychron",
+    "ducky": "Ducky",
+    "redragon": "Redragon",
+    "anne pro": "Anne Pro",
+    "akko": "Akko",
+    
+    "steelseries": "SteelSeries",
+    "hyperx": "HyperX",
+    "corsair": "Corsair",
+    
+    "qcy": "QCY",
+    "haylou": "Haylou",
+    "topping": "TOPPING",
+    "smsl": "SMSL",
+    "moondrop": "Moondrop",
+    "kz": "KZ",
+    "fifine": "FIFINE",
+    "ampligame": "FIFINE",
+    "creality": "Creality",
+    "ender": "Creality",
+    "ender 3": "Creality",
+    "anycubic": "Anycubic",
+    "elegoo": "Elegoo",
+    "bambu lab": "Bambu Lab",
+    "bambu": "Bambu Lab",
+    "prusa": "Prusa",
+    "baseus": "Baseus",
+    "ugreen": "Ugreen",
+    "rode": "Rode",
+    "elgato": "Elgato",
+    "blue yeti": "Blue",
+    "blue snowball": "Blue",
+    "maono": "Maono",
+    "tonor": "Tonor"
+  },
+
+  "colors": [
+    "black", "white", "silver", "gray", "grey", "gold", "rose gold", "rose",
+    "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown",
+    "navy", "navy blue", "midnight", "midnight blue", "sky blue", "light blue",
+    "dark blue", "royal blue", "ocean blue", "pacific blue", "sierra blue", "alpine green",
+    "forest green", "sage", "sage green", "mint", "mint green", "olive", "teal",
+    "burgundy", "wine", "maroon", "coral", "salmon", "peach", "cream", "ivory", "beige", "tan",
+    "graphite", "space gray", "space grey", "starlight", "champagne", "bronze", "copper",
+    "titanium", "platinum", "matte black", "jet black", "phantom black",
+    "mystic bronze", "mystic black", "mystic white", "phantom silver",
+    "product red", "(product)red", "red product", "sierra blue", "deep purple",
+    "lavender", "violet", "lilac", "natural titanium", "blue titanium", "white titanium",
+    "desert titanium"
+  ],
+
+  "condition_keywords": {
+    "new": ["new", "brand new", "sealed", "unopened", "factory sealed"],
+    "refurbished": ["refurbished", "renewed", "certified refurbished", "factory refurbished", "reconditioned"],
+    "used": ["used", "pre-owned", "preowned", "second hand", "secondhand"],
+    "open box": ["open box", "open-box", "openbox"]
+  },
+
+  "variant_keywords": {
+    "pro": ["pro", "professional"],
+    "max": ["max", "maximum"],
+    "plus": ["plus", "+"],
+    "mini": ["mini", "compact"],
+    "lite": ["lite", "light", "essential"],
+    "ultra": ["ultra"],
+    "se": ["se", "special edition"],
+    "fe": ["fe", "fan edition"],
+    "gt": ["gt", "grand touring"],
+    "air": ["air"],
+    "slim": ["slim", "thin"]
+  },
+
+  "bundle_keywords": [
+    "bundle", "kit", "set", "pack", "combo", "package", "with case",
+    "with charger", "includes", "w/", "w /"
+  ]
+}
+

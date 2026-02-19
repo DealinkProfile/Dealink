@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+.env
+*.egg-info/
+dist/
+build/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Extension build artifacts
+extension/*.crx
+extension/*.pem
+
+# Node (if any)
+node_modules/
+package-lock.json
+
+# Coverage / testing
+htmlcov/
+.coverage
+.pytest_cache/
+.tox/
+
+# Misc
+*.bak
+*.tmp
+*.temp
+PROJECT_STATUS.md

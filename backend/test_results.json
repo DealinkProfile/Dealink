@@ -1,0 +1,650 @@
+[
+  {
+    "name": "Amazon #1 - Corsair HS50 PRO Gaming Headset",
+    "status": "OK",
+    "time": 0.04950857162475586,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 37.9,
+      "url_type": "direct"
+    },
+    "savings": 24.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #2 - Apple AirPods Max",
+    "status": "OK",
+    "time": 0.8148369789123535,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 331.15,
+      "url_type": "direct"
+    },
+    "savings": 26.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #3 - JBL Flip 4 Bluetooth Speaker",
+    "status": "OK",
+    "time": 0.8035624027252197,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 59.46,
+      "url_type": "direct"
+    },
+    "savings": 25.6,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #4 - Echo Dot (2nd Gen)",
+    "status": "OK",
+    "time": 0.7725601196289062,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 22.41,
+      "url_type": "direct"
+    },
+    "savings": 25.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #5 - Anker PowerCore 10000",
+    "status": "OK",
+    "time": 0.8023450374603271,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 17.23,
+      "url_type": "direct"
+    },
+    "savings": 21.6,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #6 - Logitech G502 HERO Mouse",
+    "status": "OK",
+    "time": 10.417877912521362,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 29.93,
+      "url_type": "direct"
+    },
+    "savings": 25.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #7 - Sony WH-1000XM5 Headphones",
+    "status": "OK",
+    "time": 0.7904677391052246,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 240.95,
+      "url_type": "direct"
+    },
+    "savings": 26.5,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #8 - Samsung Galaxy Buds2 Pro",
+    "status": "OK",
+    "time": 0.8217663764953613,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 105.03,
+      "url_type": "direct"
+    },
+    "savings": 30.0,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #9 - Bose SoundLink Mini II",
+    "status": "OK",
+    "time": 0.803795337677002,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 106.7,
+      "url_type": "direct"
+    },
+    "savings": 28.4,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #10 - Razer DeathAdder Essential Mouse",
+    "status": "OK",
+    "time": 0.7956075668334961,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 16.51,
+      "url_type": "direct"
+    },
+    "savings": 17.4,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #11 - Dyson V15 Detect",
+    "status": "OK",
+    "time": 0.8308091163635254,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 488.33,
+      "url_type": "direct"
+    },
+    "savings": 24.9,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Amazon #12 - Nintendo Switch OLED",
+    "status": "OK",
+    "time": 0.8063085079193115,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 276.77,
+      "url_type": "direct"
+    },
+    "savings": 20.9,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #1 - Apple iPhone 15 Pro Max 256GB",
+    "status": "OK",
+    "time": 0.05719947814941406,
+    "results_count": 3,
+    "best_deal": {
+      "store": "walmart",
+      "price": 768.04,
+      "url_type": "direct"
+    },
+    "savings": 23.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #2 - Samsung Galaxy S24 Ultra 512GB",
+    "status": "OK",
+    "time": 1.2746710777282715,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 805.36,
+      "url_type": "direct"
+    },
+    "savings": 26.7,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #3 - Sony PlayStation 5 Console",
+    "status": "OK",
+    "time": 1.2254197597503662,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 348.98,
+      "url_type": "direct"
+    },
+    "savings": 22.4,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #4 - DJI Mini 3 Pro Drone",
+    "status": "OK",
+    "time": 5.45914626121521,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 554.36,
+      "url_type": "direct"
+    },
+    "savings": 27.0,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #5 - Dell XPS 15 Laptop",
+    "status": "OK",
+    "time": 6.8488476276397705,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 1194.45,
+      "url_type": "direct"
+    },
+    "savings": 25.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #6 - Sennheiser HD 600 Headphones",
+    "status": "OK",
+    "time": 6.5663018226623535,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 227.48,
+      "url_type": "direct"
+    },
+    "savings": 24.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #7 - GoPro HERO 12 Black",
+    "status": "OK",
+    "time": 4.601772308349609,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 229.11,
+      "url_type": "direct"
+    },
+    "savings": 23.4,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #8 - Google Pixel 8 Pro",
+    "status": "OK",
+    "time": 14.27937626838684,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 509.29,
+      "url_type": "direct"
+    },
+    "savings": 27.1,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #9 - Garmin Fenix 7X Pro",
+    "status": "OK",
+    "time": 15.369930744171143,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 548.63,
+      "url_type": "direct"
+    },
+    "savings": 21.6,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "eBay #10 - Beyerdynamic DT 770 Pro",
+    "status": "OK",
+    "time": 12.315210819244385,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 105.27,
+      "url_type": "direct"
+    },
+    "savings": 29.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #1 - LEVOIT Core 300S Air Purifier",
+    "status": "OK",
+    "time": 0.08258366584777832,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 92.77,
+      "url_type": "direct"
+    },
+    "savings": 22.7,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #2 - Xbox Series X Console",
+    "status": "OK",
+    "time": 1.1880214214324951,
+    "results_count": 3,
+    "best_deal": {
+      "store": "walmart",
+      "price": 407.72,
+      "url_type": "direct"
+    },
+    "savings": 18.5,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #3 - KitchenAid Stand Mixer",
+    "status": "OK",
+    "time": 1.2307014465332031,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 294.31,
+      "url_type": "direct"
+    },
+    "savings": 22.5,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #4 - iRobot Roomba j7+",
+    "status": "OK",
+    "time": 0.8108432292938232,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 462.54,
+      "url_type": "direct"
+    },
+    "savings": 22.9,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #5 - Ninja Foodi Air Fryer",
+    "status": "OK",
+    "time": 0.8470261096954346,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 93.85,
+      "url_type": "direct"
+    },
+    "savings": 21.8,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #6 - HP Envy Laptop",
+    "status": "OK",
+    "time": 1.4105007648468018,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 904.96,
+      "url_type": "direct"
+    },
+    "savings": 17.7,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #7 - Shark IQ Robot Vacuum",
+    "status": "OK",
+    "time": 0.8084030151367188,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 230.84,
+      "url_type": "direct"
+    },
+    "savings": 23.1,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #8 - Canon EOS R50 Camera",
+    "status": "OK",
+    "time": 0.8298354148864746,
+    "results_count": 3,
+    "best_deal": {
+      "store": "walmart",
+      "price": 525.49,
+      "url_type": "direct"
+    },
+    "savings": 22.6,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #9 - Samsung 65 inch 4K TV",
+    "status": "OK",
+    "time": 1.1613879203796387,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 347.41,
+      "url_type": "direct"
+    },
+    "savings": 22.5,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Walmart #10 - Breville Barista Express",
+    "status": "OK",
+    "time": 0.8128106594085693,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 444.04,
+      "url_type": "direct"
+    },
+    "savings": 26.0,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #1 - RK ROYAL KLUDGE RK84 Keyboard",
+    "status": "OK",
+    "time": 0.030109405517578125,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 42.15,
+      "url_type": "direct"
+    },
+    "savings": 23.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #2 - Keychron K2 Keyboard",
+    "status": "OK",
+    "time": 10.014673709869385,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 55.2,
+      "url_type": "direct"
+    },
+    "savings": 21.1,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #3 - Xiaomi Redmi Buds 4 Pro",
+    "status": "OK",
+    "time": 7.561470031738281,
+    "results_count": 3,
+    "best_deal": {
+      "store": "walmart",
+      "price": 32.55,
+      "url_type": "direct"
+    },
+    "savings": 18.6,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #4 - Baseus 65W GaN Charger",
+    "status": "NO_RESULTS",
+    "time": 5.397125005722046,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #5 - UGREEN USB-C Hub",
+    "status": "OK",
+    "time": 28.441007375717163,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 38.03,
+      "url_type": "direct"
+    },
+    "savings": 17.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #6 - QCY T13 ANC Earbuds",
+    "status": "NO_RESULTS",
+    "time": 6.120006799697876,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #7 - Haylou Solar Plus RT3",
+    "status": "NO_RESULTS",
+    "time": 9.250491619110107,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #8 - Topping E30 DAC",
+    "status": "NO_RESULTS",
+    "time": 10.472654581069946,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #9 - Creality Ender 3 V3 SE",
+    "status": "NO_RESULTS",
+    "time": 5.879599094390869,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "AliExpress #10 - SteelSeries Arctis Nova 7",
+    "status": "OK",
+    "time": 7.35802698135376,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 109.12,
+      "url_type": "direct"
+    },
+    "savings": 27.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Israel Locale - iPhone 15",
+    "status": "OK",
+    "time": 5.683854818344116,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 2594.88,
+      "url_type": "direct"
+    },
+    "savings": 25.8,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Edge - Very cheap product (<$20)",
+    "status": "OK",
+    "time": 6.0086939334869385,
+    "results_count": 3,
+    "best_deal": {
+      "store": "ebay",
+      "price": 7.47,
+      "url_type": "direct"
+    },
+    "savings": 25.2,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Edge - Very expensive product (>$2000)",
+    "status": "OK",
+    "time": 4.1303722858428955,
+    "results_count": 3,
+    "best_deal": {
+      "store": "bestbuy",
+      "price": 2565.67,
+      "url_type": "direct"
+    },
+    "savings": 26.7,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Edge - Niche product (audiophile)",
+    "status": "OK",
+    "time": 6.1465606689453125,
+    "results_count": 3,
+    "best_deal": {
+      "store": "target",
+      "price": 309.99,
+      "url_type": "direct"
+    },
+    "savings": 22.3,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Edge - Unknown brand from AliExpress",
+    "status": "NO_RESULTS",
+    "time": 8.646511554718018,
+    "results_count": 0,
+    "best_deal": null,
+    "savings": null,
+    "google_links": 0,
+    "search_links": 0
+  },
+  {
+    "name": "Edge - Long title with lots of specs",
+    "status": "OK",
+    "time": 5.487905502319336,
+    "results_count": 3,
+    "best_deal": {
+      "store": "amazon",
+      "price": 936.97,
+      "url_type": "direct"
+    },
+    "savings": 25.0,
+    "google_links": 0,
+    "search_links": 0
+  }
+]
