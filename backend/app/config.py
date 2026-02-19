@@ -35,14 +35,6 @@ class Settings:
     @property
     def has_serpapi_key(self) -> bool:
         return self.SERPAPI_KEY is not None and len(self.SERPAPI_KEY) > 0
-    
-    @property
-    def has_ebay_key(self) -> bool:
-        return self.EBAY_API_KEY is not None
-    
-    @property
-    def has_walmart_key(self) -> bool:
-        return self.WALMART_API_KEY is not None
 
 # Global settings instance
 settings = Settings()
