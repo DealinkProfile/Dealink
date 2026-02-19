@@ -374,7 +374,7 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
       const amountEl = document.getElementById('hero-amount');
       const subEl = document.getElementById('hero-sub');
       if (amountEl) amountEl.textContent = formatPrice(savings, currency);
-      if (subEl) subEl.textContent = `-${percent}%`;
+      if (subEl) subEl.textContent = `-${percent}% vs. current price`;
       heroBanner.classList.remove('hidden');
     } else {
       heroBanner.classList.add('hidden');
@@ -442,6 +442,7 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
   });
 
   card.classList.remove('hidden');
+  document.getElementById('card-label')?.classList.remove('hidden');
 }
 
 function createResultCard(result, originalPrice, currency) {
