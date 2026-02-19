@@ -57,13 +57,44 @@ def _search(query: str) -> list[dict]:
 
 def _normalize(r: dict) -> dict:
     """Convert raw SerpApi result to our clean format."""
+    store = r.get("source", "")
+    title = r.get("title", "")
+    direct_link = r.get("link") or _build_store_link(store, title)
     return {
-        "store": r.get("source", ""),
-        "title": r.get("title", ""),
+        "store": store,
+        "title": title,
         "price_str": r.get("price", ""),
         "price": float(r.get("extracted_price", 0)),
-        "url": r.get("link") or r.get("product_link", ""),
+        "url": direct_link,
         "image": r.get("thumbnail", ""),
         "rating": r.get("rating"),
         "reviews": r.get("reviews"),
     }
+
+
+def _build_store_link(store: str, title: str) -> str:
+    """
+    Build a direct store search link from the store name and product title.
+    Used when SerpApi doesn't return a direct link (Google Shopping API limitation).
+    """
+    from urllib.parse import quote_plus
+    q = quote_plus(title)
+    s = store.lower()
+
+    if "amazon" in s:
+        return f"https://www.amazon.com/s?k={q}"
+    if "ebay" in s:
+        return f"https://www.ebay.com/sch/i.html?_nkw={q}"
+    if "walmart" in s:
+        return f"https://www.walmart.com/search?q={q}"
+    if "aliexpress" in s:
+        return f"https://www.aliexpress.com/wholesale?SearchText={q}"
+    if "newegg" in s:
+        return f"https://www.newegg.com/p/pl?d={q}"
+    if "bestbuy" in s:
+        return f"https://www.bestbuy.com/site/searchpage.jsp?st={q}"
+    if "target" in s:
+        return f"https://www.target.com/s?searchTerm={q}"
+
+    # Fallback: Google Shopping product link
+    return ""
