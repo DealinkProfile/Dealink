@@ -4,7 +4,7 @@
 // Backend URL — change to production URL when deploying
 // Local development: http://127.0.0.1:8000
 // Production: https://your-app.railway.app (or Render URL)
-const BACKEND_URL = 'http://127.0.0.1:8000/api/v1/search';
+const BACKEND_URL = 'https://dealink-api-production.up.railway.app/api/v1/search';
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 1000; // 1 second base delay
 const CACHE_TTL = 1 * 60 * 60 * 1000; // 1 hour (aligned with backend cache)
