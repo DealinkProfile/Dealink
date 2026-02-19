@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="popup.css">
@@ -18,7 +18,7 @@
         </svg>
         <span class="brand-name">Dealink</span>
       </div>
-      <button class="close-btn" id="close-btn" aria-label="סגור">
+      <button class="close-btn" id="close-btn" aria-label="Close">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="18" y1="6" x2="6" y2="18"/>
           <line x1="6" y1="6" x2="18" y2="18"/>
@@ -38,8 +38,8 @@
             </svg>
           </div>
         </div>
-        <h2 class="loading-title">מחפש את הדיל הכי טוב</h2>
-        <p class="loading-sub" id="loading-msg">בודק Amazon, eBay, Walmart...</p>
+        <h2 class="loading-title">Finding the best deal</h2>
+        <p class="loading-sub" id="loading-msg">Checking Amazon, eBay, Walmart...</p>
         <div class="prog-row">
           <div class="prog-track">
             <div class="prog-fill" id="progress-fill"></div>
@@ -52,23 +52,15 @@
     <!-- ── RESULTS ── -->
     <div id="state-results" class="state hidden">
 
-      <!-- Demo mode indicator -->
+      <!-- Similar products indicator (shown when no exact results) -->
       <div class="demo-banner hidden" id="demo-banner">
-        🔍 לא מצאנו תוצאות אמיתיות — הנה דוגמא איך זה נראה
-      </div>
-
-      <!-- Sort pills -->
-      <div class="sort-row" id="sort-bar">
-        <span class="sort-label">מיין:</span>
-        <button class="spill active" data-sort="price">מחיר</button>
-        <button class="spill" data-sort="popularity">פופולרי</button>
-        <button class="spill" data-sort="rating">דירוג</button>
+        🔍 No exact matches — showing similar products
       </div>
 
       <!-- Savings hero -->
       <div class="hero-banner" id="hero-banner">
         <div class="hero-left">
-          <p class="hero-label">חסכון שמצאנו לך</p>
+          <p class="hero-label">Savings found</p>
           <p class="hero-amount" id="hero-amount">$47.50</p>
         </div>
         <div class="hero-right">
@@ -79,7 +71,7 @@
       <!-- Best deal -->
       <div class="best-card" id="best-deal-card">
         <div class="best-header">
-          <span class="trophy-tag">🏆 הכי זול</span>
+          <span class="trophy-tag">🏆 Best price</span>
           <span class="disc-pill" id="best-deal-badge">-38%</span>
         </div>
         <div class="best-body">
@@ -91,18 +83,18 @@
           </div>
           <div class="best-right">
             <span class="best-price" id="best-deal-price"></span>
-            <a class="buy-btn" id="best-deal-link" href="#">לקנות →</a>
+            <a class="buy-btn" id="best-deal-link" href="#">Buy now →</a>
           </div>
         </div>
         <div class="savings-strip" id="best-deal-savings"></div>
       </div>
 
       <!-- Other deals -->
-      <p class="section-lbl" id="more-label">עוד אפשרויות</p>
+      <p class="section-lbl" id="more-label">More options</p>
       <div class="deal-stack" id="results-list"></div>
 
       <button class="expand-btn hidden" id="show-more-btn">
-        <span id="show-more-text">הצג עוד</span>
+        <span id="show-more-text">Show more</span>
         <span class="expand-chip" id="show-more-count"></span>
         <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <polyline points="6 9 12 15 18 9"/>
@@ -113,7 +105,7 @@
       <!-- Used/Refurbished -->
       <div id="used-section" class="sub-block hidden">
         <button class="sub-toggle" id="used-toggle">
-          <span class="sub-label">♻️ משומש / מחודש</span>
+          <span class="sub-label">♻️ Used / Refurbished</span>
           <span class="count-chip" id="used-count-badge">0</span>
           <svg class="chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="6 9 12 15 18 9"/>
@@ -125,7 +117,7 @@
       <!-- Similar -->
       <div id="similar-section" class="sub-block hidden">
         <button class="sub-toggle" id="similar-toggle">
-          <span class="sub-label">מוצרים דומים</span>
+          <span class="sub-label">Similar products</span>
           <svg class="chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
@@ -139,8 +131,8 @@
     <div id="state-no-product" class="state hidden">
       <div class="center-state">
         <div class="state-icon">🛍️</div>
-        <h2 class="state-title">עבור לדף מוצר</h2>
-        <p class="state-sub">Dealink ישווה מחירים אוטומטית ב-50+ חנויות</p>
+        <h2 class="state-title">Go to a product page</h2>
+        <p class="state-sub">Dealink will automatically compare prices across 50+ stores</p>
         <div class="store-chips">
           <img src="https://www.google.com/s2/favicons?domain=amazon.com&sz=32" alt="Amazon" title="Amazon">
           <img src="https://www.google.com/s2/favicons?domain=ebay.com&sz=32" alt="eBay" title="eBay">
@@ -156,8 +148,8 @@
     <div id="state-no-deals" class="state hidden">
       <div class="center-state">
         <div class="state-icon">✨</div>
-        <h2 class="state-title">זה המחיר הטוב ביותר!</h2>
-        <p class="state-sub">בדקנו עשרות חנויות — אתה כבר בהצעה הכי טובה.</p>
+        <h2 class="state-title">Best price available!</h2>
+        <p class="state-sub">We checked dozens of stores — you already have the best deal.</p>
       </div>
     </div>
 
@@ -165,17 +157,15 @@
     <div id="state-error" class="state hidden">
       <div class="center-state">
         <div class="state-icon">😕</div>
-        <h2 class="state-title">משהו השתבש</h2>
-        <p class="state-sub" id="error-message">לא הצלחנו לחפש מחירים.</p>
-        <button class="action-btn" id="retry-btn">↺ נסה שוב</button>
+        <h2 class="state-title">Something went wrong</h2>
+        <p class="state-sub" id="error-message">We couldn't search for prices.</p>
+        <button class="action-btn" id="retry-btn">↺ Try again</button>
       </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <button class="f-link" id="report-btn">דווח על בעיה</button>
-      <span class="f-sep">·</span>
-      <a href="privacy-policy.html" target="_blank" class="f-link">פרטיות</a>
+      <button class="f-link" id="report-btn">Report issue</button>
     </footer>
 
   </div>

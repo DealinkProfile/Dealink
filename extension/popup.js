@@ -286,11 +286,11 @@ function startProgressAnimation() {
 
   // Progress stages with descriptive messages
   const stages = [
-    { at: 15, msg: 'מזהה את המוצר...' },
-    { at: 35, msg: 'מחפש דילים מדויקים...' },
-    { at: 55, msg: 'משווה מחירים בחנויות...' },
-    { at: 75, msg: 'בודק מבצעים נוספים...' },
-    { at: 90, msg: 'מסיים...' },
+    { at: 15, msg: 'Identifying product...' },
+    { at: 35, msg: 'Searching for exact matches...' },
+    { at: 55, msg: 'Comparing prices across stores...' },
+    { at: 75, msg: 'Checking more deals...' },
+    { at: 90, msg: 'Finishing up...' },
   ];
 
   progressInterval = setInterval(() => {
@@ -315,7 +315,7 @@ function startProgressAnimation() {
   // After 6 seconds, show patience message
   patienceTimeout = setTimeout(() => {
     if (subtitle) {
-      subtitle.textContent = 'עדיין מחפש... תודה על הסבלנות! 🔍';
+      subtitle.textContent = 'Still searching... thanks for your patience! 🔍';
     }
   }, 6000);
 }
@@ -385,7 +385,7 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
   const savingsEl = document.getElementById('best-deal-savings');
   if (savingsEl) {
     savingsEl.textContent = savings > 0
-      ? `חוסך ${formatPrice(savings, currency)} (${percent}%) לעומת המחיר הנוכחי`
+      ? `Saves ${formatPrice(savings, currency)} (${percent}%) vs. current price`
       : '';
   }
 
@@ -408,9 +408,9 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
   // ── Shipping ──
   const shippingEl = document.getElementById('best-deal-shipping');
   if (bestDeal.shipping === 0) {
-    shippingEl.textContent = 'משלוח חינם ✓';
+    shippingEl.textContent = 'Free shipping ✓';
   } else if (bestDeal.shipping > 0) {
-    shippingEl.textContent = `+ ${formatPrice(bestDeal.shipping, currency)} משלוח`;
+    shippingEl.textContent = `+ ${formatPrice(bestDeal.shipping, currency)} shipping`;
   } else {
     shippingEl.textContent = '';
   }
@@ -556,11 +556,11 @@ function renderSortedCards(sorted, originalPrice, currency) {
     // Restore expanded/collapsed state
     if (isExpanded) {
       extraContainer.classList.remove('hidden');
-      showMoreText.textContent = 'הצג פחות';
+      showMoreText.textContent = 'Show less';
       showMoreBtn.classList.add('expanded');
     } else {
       extraContainer.classList.add('hidden');
-      showMoreText.textContent = 'הצג עוד תוצאות';
+      showMoreText.textContent = 'Show more';
       showMoreBtn.classList.remove('expanded');
     }
   } else {
@@ -618,11 +618,11 @@ function toggleShowMore() {
 
   if (isExpanded) {
     extraContainer.classList.remove('hidden');
-    showMoreText.textContent = 'הצג פחות';
+    showMoreText.textContent = 'Show less';
     showMoreBtn.classList.add('expanded');
   } else {
     extraContainer.classList.add('hidden');
-    showMoreText.textContent = 'הצג עוד תוצאות';
+    showMoreText.textContent = 'Show more';
     showMoreBtn.classList.remove('expanded');
   }
 }
@@ -650,7 +650,7 @@ function renderUsedProducts(products, originalPrice, currency) {
     // Add a "used/refurbished" badge to the store name
     const storeNameEl = card.querySelector('.deal-store');
     if (storeNameEl) {
-      const condition = product.condition === 'refurbished' ? 'מחודש' : 'משומש';
+      const condition = product.condition === 'refurbished' ? 'Refurbished' : 'Used';
       storeNameEl.innerHTML += ` <span class="used-badge">${condition}</span>`;
     }
     
@@ -726,16 +726,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('used-list').classList.toggle('hidden');
   });
   
-  // Sort buttons
-  document.querySelectorAll('.spill').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sortBy = btn.dataset.sort;
-      if (sortBy && sortBy !== currentSort) {
-        reRenderWithSort(sortBy);
-        if (typeof DealinkAnalytics !== 'undefined') DealinkAnalytics.trackSortChanged(sortBy);
-      }
-    });
-  });
+  // Sort buttons removed — results always sorted by price automatically
   
   // Show More button
   document.getElementById('show-more-btn')?.addEventListener('click', toggleShowMore);
@@ -748,8 +739,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (currentUrl.includes('dealink_source=1')) {
     showState(States.NO_DEALS);
     document.querySelector('#state-no-deals .state-icon').textContent = '✅';
-    document.querySelector('#state-no-deals .state-title').textContent = 'כבר בדקנו!';
-    document.querySelector('#state-no-deals .state-sub').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
+    document.querySelector('#state-no-deals .state-title').textContent = 'Already checked!';
+    document.querySelector('#state-no-deals .state-sub').textContent = 'You arrived via Dealink — this is the best deal we found.';
     return;
   }
   
@@ -818,8 +809,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (dealinkResult.dealink_source) {
     showState(States.NO_DEALS);
     document.querySelector('#state-no-deals .state-icon').textContent = '✅';
-    document.querySelector('#state-no-deals .state-title').textContent = 'כבר בדקנו!';
-    document.querySelector('#state-no-deals .state-sub').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
+    document.querySelector('#state-no-deals .state-title').textContent = 'Already checked!';
+    document.querySelector('#state-no-deals .state-sub').textContent = 'You arrived via Dealink — this is the best deal we found.';
     return;
   }
 
@@ -843,7 +834,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } else if (sameProducts.length === 0 && usedProducts.length > 0) {
     showState(States.RESULTS);
     document.getElementById('best-deal-card').classList.add('hidden');
-    document.getElementById('sort-bar').classList.add('hidden');
+    document.getElementById('sort-bar')?.classList.add('hidden');
     renderUsedProducts(usedProducts, originalPrice, currency);
     renderSimilar(similarProducts, currency);
   } else {
