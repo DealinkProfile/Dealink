@@ -62,7 +62,7 @@ def _normalize(r: dict) -> dict:
         "title": r.get("title", ""),
         "price_str": r.get("price", ""),
         "price": float(r.get("extracted_price", 0)),
-        "url": r.get("link", ""),
+        "url": r.get("link") or r.get("product_link", ""),
         "image": r.get("thumbnail", ""),
         "rating": r.get("rating"),
         "reviews": r.get("reviews"),
