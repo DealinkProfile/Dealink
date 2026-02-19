@@ -269,9 +269,9 @@ let patienceTimeout = null;
 function startProgressAnimation() {
   const fill = document.getElementById('progress-fill');
   const text = document.getElementById('progress-text');
-  const subtitle = document.querySelector('.loading-subtitle');
+  const subtitle = document.getElementById('loading-msg');
   let progress = 0;
-  
+
   // Progress stages with descriptive messages
   const stages = [
     { at: 15, msg: 'מזהה את המוצר...' },
@@ -280,15 +280,15 @@ function startProgressAnimation() {
     { at: 75, msg: 'בודק מבצעים נוספים...' },
     { at: 90, msg: 'מסיים...' },
   ];
-  
+
   progressInterval = setInterval(() => {
     // Slow down as we approach 90%
     const increment = progress < 60 ? 3 : progress < 80 ? 1 : 0.5;
     progress = Math.min(progress + increment, 90);
-    
+
     fill.style.width = progress + '%';
     text.textContent = Math.round(progress) + '%';
-    
+
     // Update subtitle text at each stage
     if (subtitle) {
       for (let i = stages.length - 1; i >= 0; i--) {
@@ -299,7 +299,7 @@ function startProgressAnimation() {
       }
     }
   }, 100);
-  
+
   // After 6 seconds, show patience message
   patienceTimeout = setTimeout(() => {
     if (subtitle) {
@@ -348,20 +348,34 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
   const price = bestDeal.total || bestDeal.price;
   const savings = calcSavingsAmount(originalPrice, price);
   const percent = calcSavingsPercent(originalPrice, price);
-  
-  // Update savings text
-  const savingsEl = document.getElementById('best-deal-savings');
-  if (savings > 0) {
-    savingsEl.textContent = `חסוך ${formatPrice(savings, currency)} (${percent}%)`;
-  } else {
-    savingsEl.textContent = '';
+
+  // ── Hero savings banner ──
+  const heroBanner = document.getElementById('hero-banner');
+  if (heroBanner) {
+    if (savings > 0) {
+      const amountEl = document.getElementById('hero-amount');
+      const subEl = document.getElementById('hero-sub');
+      if (amountEl) amountEl.textContent = formatPrice(savings, currency);
+      if (subEl) subEl.textContent = `-${percent}%`;
+      heroBanner.classList.remove('hidden');
+    } else {
+      heroBanner.classList.add('hidden');
+    }
   }
-  
-  // Update store info
+
+  // ── Savings strip inside card ──
+  const savingsEl = document.getElementById('best-deal-savings');
+  if (savingsEl) {
+    savingsEl.textContent = savings > 0
+      ? `חוסך ${formatPrice(savings, currency)} (${percent}%) לעומת המחיר הנוכחי`
+      : '';
+  }
+
+  // ── Store info ──
   document.getElementById('best-deal-logo').src = getStoreLogo(bestDeal.platform);
   document.getElementById('best-deal-store-name').textContent = getStoreName(bestDeal.platform);
-  
-  // Update badge
+
+  // ── Discount badge ──
   const badge = document.getElementById('best-deal-badge');
   if (percent > 0) {
     badge.textContent = `-${percent}%`;
@@ -369,120 +383,102 @@ function renderBestDealCard(bestDeal, originalPrice, currency) {
   } else {
     badge.style.display = 'none';
   }
-  
-  // Update price
+
+  // ── Price ──
   document.getElementById('best-deal-price').textContent = formatPrice(price, currency);
-  
-  // Update shipping
+
+  // ── Shipping ──
   const shippingEl = document.getElementById('best-deal-shipping');
   if (bestDeal.shipping === 0) {
-    shippingEl.textContent = 'משלוח חינם';
+    shippingEl.textContent = 'משלוח חינם ✓';
   } else if (bestDeal.shipping > 0) {
     shippingEl.textContent = `+ ${formatPrice(bestDeal.shipping, currency)} משלוח`;
   } else {
     shippingEl.textContent = '';
   }
-  
-  // Update rating / reviews in best deal
+
+  // ── Rating / reviews ──
   const bestMeta = document.getElementById('best-deal-meta');
   if (bestMeta) {
-    let metaParts = [];
+    let metaHtml = '';
     if (bestDeal.rating && bestDeal.rating > 0) {
-      metaParts.push(`${starSvg()} ${bestDeal.rating.toFixed(1)}`);
+      metaHtml += `${starSvg()} ${bestDeal.rating.toFixed(1)}`;
+      if (bestDeal.reviews && bestDeal.reviews > 0) {
+        metaHtml += ` <span style="color:var(--text-4)">(${formatReviews(bestDeal.reviews)})</span>`;
+      }
     }
-    if (bestDeal.reviews && bestDeal.reviews > 0) {
-      metaParts.push(`(${formatReviews(bestDeal.reviews)} ביקורות)`);
-    }
-    bestMeta.innerHTML = metaParts.length > 0 ? 
-      `<span class="result-rating">${metaParts.join(' ')}</span>` : '';
+    bestMeta.innerHTML = metaHtml;
   }
-  
-  // Update link — open in new tab without closing popup
+
+  // ── Buy link — open in new tab without closing popup ──
   const bestDealLink = document.getElementById('best-deal-link');
   const bestDealUrl = addDealinkParam(bestDeal.url || '#');
-  bestDealLink.href = '#'; // prevent default navigation
+  bestDealLink.href = '#';
   bestDealLink.removeAttribute('target');
-  bestDealLink.addEventListener('click', (e) => {
+  // Clone to remove any stale listeners
+  const newLink = bestDealLink.cloneNode(true);
+  bestDealLink.parentNode.replaceChild(newLink, bestDealLink);
+  newLink.addEventListener('click', (e) => {
     e.preventDefault();
     chrome.tabs.create({ url: bestDealUrl, active: false });
   });
-  
+
   card.classList.remove('hidden');
 }
 
 function createResultCard(result, originalPrice, currency) {
   const price = result.total || result.price;
   const savings = calcSavingsPercent(originalPrice, price);
-  
-  // Use div instead of <a> so clicking doesn't close the popup
-  const card = document.createElement('div');
-  card.className = 'result-card';
-  card.style.cursor = 'pointer';
-  
   const dealUrl = addDealinkParam(result.url || '#');
-  
-  // Shipping text
-  let shippingText = '';
-  if (result.shipping === 0) {
-    shippingText = 'משלוח חינם';
-  } else if (result.shipping > 0) {
-    shippingText = `+ ${formatPrice(result.shipping, currency)} משלוח`;
-  }
-  
-  // Savings badge
+
+  const row = document.createElement('div');
+  row.className = 'deal-row';
+
+  // Badge
   let badgeHtml = '';
   if (savings > 0) {
-    badgeHtml = `<span class="savings-badge">-${savings}%</span>`;
+    badgeHtml = `<span class="deal-badge save">-${savings}%</span>`;
   } else if (savings < 0) {
-    badgeHtml = `<span class="savings-badge negative">+${Math.abs(savings)}%</span>`;
-  }
-  
-  // Rating & reviews meta line
-  let metaHtml = '';
-  const hasRating = result.rating && result.rating > 0;
-  const hasReviews = result.reviews && result.reviews > 0;
-  if (hasRating || hasReviews) {
-    metaHtml = '<div class="result-meta">';
-    if (hasRating) {
-      metaHtml += `<span class="result-rating">${starSvg()} ${result.rating.toFixed(1)}</span>`;
-    }
-    if (hasReviews) {
-      metaHtml += `<span class="result-reviews">(${formatReviews(result.reviews)})</span>`;
-    }
-    metaHtml += '</div>';
+    badgeHtml = `<span class="deal-badge more">+${Math.abs(savings)}%</span>`;
   }
 
-  card.innerHTML = `
-    <img src="${getStoreLogo(result.platform)}" alt="${getStoreName(result.platform)}" class="store-logo">
-    <div class="result-info">
-      <div class="store-name">${getStoreName(result.platform)}</div>
-      <div class="result-price-row">
-        <span class="result-price">${formatPrice(price, currency)}</span>
-        ${badgeHtml}
-      </div>
-      ${shippingText ? `<div class="result-shipping">${shippingText}</div>` : ''}
-      ${metaHtml}
+  // Rating
+  let ratingHtml = '';
+  if (result.rating && result.rating > 0) {
+    ratingHtml = `<span class="deal-rating">${starSvg()} ${result.rating.toFixed(1)}</span>`;
+    if (result.reviews && result.reviews > 0) {
+      ratingHtml += `<span class="deal-reviews">(${formatReviews(result.reviews)})</span>`;
+    }
+  }
+
+  row.innerHTML = `
+    <img src="${getStoreLogo(result.platform)}" alt="${getStoreName(result.platform)}" class="store-icon sm">
+    <div class="deal-info">
+      <div class="deal-store">${getStoreName(result.platform)}</div>
+      ${ratingHtml ? `<div class="deal-meta">${ratingHtml}</div>` : ''}
     </div>
-    <div class="result-action">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-        <polyline points="15 3 21 3 21 9"></polyline>
-        <line x1="10" y1="14" x2="21" y2="3"></line>
+    <div class="deal-right">
+      <span class="deal-price">${formatPrice(price, currency)}</span>
+      ${badgeHtml}
+    </div>
+    <div class="deal-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
       </svg>
     </div>
   `;
-  
-  // Open link in new tab WITHOUT closing the popup
-  card.addEventListener('click', (e) => {
+
+  row.addEventListener('click', (e) => {
     e.preventDefault();
     chrome.tabs.create({ url: dealUrl, active: false });
-    // Track analytics
     if (typeof DealinkAnalytics !== 'undefined') {
       DealinkAnalytics.trackDealClicked(result.platform, savings, 0);
     }
   });
-  
-  return card;
+
+  return row;
 }
 
 function sortResults(results, sortBy) {
@@ -583,7 +579,7 @@ function reRenderWithSort(sortBy) {
   isExpanded = false; // collapse back to top 3 on sort change
   
   // Update active button
-  document.querySelectorAll('.sort-btn').forEach(btn => {
+  document.querySelectorAll('.spill').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.sort === sortBy);
   });
   
@@ -634,7 +630,7 @@ function renderUsedProducts(products, originalPrice, currency) {
     const card = createResultCard(product, originalPrice, currency);
     
     // Add a "used/refurbished" badge to the store name
-    const storeNameEl = card.querySelector('.store-name');
+    const storeNameEl = card.querySelector('.deal-store');
     if (storeNameEl) {
       const condition = product.condition === 'refurbished' ? 'מחודש' : 'משומש';
       storeNameEl.innerHTML += ` <span class="used-badge">${condition}</span>`;
@@ -713,7 +709,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   
   // Sort buttons
-  document.querySelectorAll('.sort-btn').forEach(btn => {
+  document.querySelectorAll('.spill').forEach(btn => {
     btn.addEventListener('click', () => {
       const sortBy = btn.dataset.sort;
       if (sortBy && sortBy !== currentSort) {

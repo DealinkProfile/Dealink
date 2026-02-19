@@ -8,7 +8,7 @@ const BACKEND_URL = 'https://dealink-api-production.up.railway.app/api/v1/search
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 1000; // 1 second base delay
 const CACHE_TTL = 1 * 60 * 60 * 1000; // 1 hour (aligned with backend cache)
-const REQUEST_TIMEOUT = 15000; // 15 seconds — SerpApi responds in 1-4s, 15s is generous
+const REQUEST_TIMEOUT = 30000; // 30 seconds — Railway cold start + SerpApi can take up to 20s
 
 // Error types for better handling
 const ErrorTypes = {
