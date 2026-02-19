@@ -231,6 +231,18 @@ function addDealinkParam(url) {
 }
 
 // ========================================
+// Demo Products — shown when no real results found
+// ========================================
+const DEMO_PRODUCTS = [
+  { store: 'Amazon',     platform: 'amazon',     price: 68.50, price_str: '$68.50', url: 'https://www.amazon.com',       rating: 4.5, reviews: 2847, condition: 'new' },
+  { store: 'eBay',       platform: 'ebay',        price: 61.99, price_str: '$61.99', url: 'https://www.ebay.com',         rating: 4.2, reviews: 456,  condition: 'new' },
+  { store: 'Walmart',    platform: 'walmart',     price: 71.00, price_str: '$71.00', url: 'https://www.walmart.com',      rating: 4.0, reviews: 123,  condition: 'new' },
+  { store: 'Best Buy',   platform: 'bestbuy',     price: 79.99, price_str: '$79.99', url: 'https://www.bestbuy.com',      rating: 4.3, reviews: 891,  condition: 'new' },
+  { store: 'AliExpress', platform: 'aliexpress',  price: 48.30, price_str: '$48.30', url: 'https://www.aliexpress.com',   rating: 3.8, reviews: 3200, condition: 'new' },
+];
+const DEMO_CURRENT_PRICE = 99.99;
+
+// ========================================
 // Sort / Filter State
 // ========================================
 const INITIAL_VISIBLE = 3; // 1 best deal + 2 more cards shown initially
@@ -337,6 +349,12 @@ function stopProgress() {
     clearTimeout(patienceTimeout);
     patienceTimeout = null;
   }
+}
+
+function showDemoResults() {
+  const banner = document.getElementById('demo-banner');
+  if (banner) banner.classList.remove('hidden');
+  renderResults(DEMO_PRODUCTS, DEMO_CURRENT_PRICE, 'USD');
 }
 
 // ========================================
@@ -729,9 +747,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // If user arrived from a Dealink link, show "already checked"
   if (currentUrl.includes('dealink_source=1')) {
     showState(States.NO_DEALS);
-    document.querySelector('#state-no-deals .empty-icon').textContent = '✅';
-    document.querySelector('#state-no-deals .empty-title').textContent = 'כבר בדקנו!';
-    document.querySelector('#state-no-deals .empty-text').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
+    document.querySelector('#state-no-deals .state-icon').textContent = '✅';
+    document.querySelector('#state-no-deals .state-title').textContent = 'כבר בדקנו!';
+    document.querySelector('#state-no-deals .state-sub').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
     return;
   }
   
@@ -784,12 +802,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (newResult || cachedResult) {
           clearInterval(checkInterval);
           location.reload();
-        } else if (checkCount >= 13) {
-          // After ~20 seconds (13 × 1.5s), give up
+        } else if (checkCount >= 22) {
+          // After ~33 seconds (22 × 1.5s), give up and show demo
           clearInterval(checkInterval);
-          stopProgress();
-          showState(States.ERROR);
-          document.getElementById('error-message').textContent = 'לא הצלחנו לזהות את המוצר. נסה לרענן את הדף.';
+          completeProgress(() => showDemoResults());
         }
       }, 1500);
     } else {
@@ -801,30 +817,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Skip if this is a dealink_source result (shouldn't happen now, but safety check)
   if (dealinkResult.dealink_source) {
     showState(States.NO_DEALS);
-    document.querySelector('#state-no-deals .empty-icon').textContent = '✅';
-    document.querySelector('#state-no-deals .empty-title').textContent = 'כבר בדקנו!';
-    document.querySelector('#state-no-deals .empty-text').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
+    document.querySelector('#state-no-deals .state-icon').textContent = '✅';
+    document.querySelector('#state-no-deals .state-title').textContent = 'כבר בדקנו!';
+    document.querySelector('#state-no-deals .state-sub').textContent = 'הגעת לכאן דרך Dealink — זה הדיל הכי טוב שמצאנו.';
     return;
   }
 
-  // Handle error
+  // Handle error — show demo instead of blank error
   if (dealinkResult.error) {
-    showState(States.ERROR);
-    document.getElementById('error-message').textContent = 
-      typeof dealinkResult.error === 'string' ? dealinkResult.error : 
-      'לא הצלחנו לחפש מחירים. נסה שוב.';
+    showDemoResults();
     return;
   }
-  
+
   // Data is already here — show results immediately (no artificial delay)
   const originalPrice = dealinkProduct?.price || dealinkResult.original_price;
   const currency = dealinkProduct?.currency || dealinkResult.currency || 'USD';
   const sameProducts = dealinkResult.same_products || [];
   const similarProducts = dealinkResult.similar_products || [];
   const usedProducts = dealinkResult.used_products || [];
-  
+
   if (sameProducts.length === 0 && similarProducts.length === 0 && usedProducts.length === 0) {
-    showState(States.NO_DEALS);
+    // No real results — show demo so popup is never empty
+    showDemoResults();
     if (typeof DealinkAnalytics !== 'undefined') DealinkAnalytics.trackNoDeals();
   } else if (sameProducts.length === 0 && usedProducts.length > 0) {
     showState(States.RESULTS);

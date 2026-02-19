@@ -221,6 +221,23 @@ body {
 }
 
 /* ═══════════════════════════════════════
+   Demo banner
+═══════════════════════════════════════ */
+.demo-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: #92400E;
+  margin-bottom: 12px;
+}
+
+/* ═══════════════════════════════════════
    Sort row
 ═══════════════════════════════════════ */
 .sort-row {
